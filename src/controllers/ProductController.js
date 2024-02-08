@@ -4,6 +4,8 @@ const ProductService = require('../services/ProductService');
 const router = express.Router();
 const productService = new ProductService();
 
+const authMiddlware = require('../middlewares/authMiddleware');
+
 router.get('/', async (req, res) => {
   try {
     const products = await productService.getAllProducts();
@@ -24,7 +26,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', authMiddlware,  async (req, res) => {
   try {
     const newProductId = await productService.addProduct(req.body);
     res.status(201).send({ id: newProductId });
@@ -33,7 +35,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async(req, res) => {
+router.put('/:id', authMiddlware, async(req, res) => {
   try {
     await productService.updateProduct(req.params.id, req.body);
     res.json({message: 'Producto actualizado'});
@@ -42,7 +44,7 @@ router.put('/:id', async(req, res) => {
   }
 });
 
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', authMiddlware, async(req, res) => {
   try {
     await productService.deleteProduct(req.params.id);
     res.json({message: 'Producto Eliminado'});
