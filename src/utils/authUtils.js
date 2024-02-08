@@ -8,7 +8,7 @@ async function validateToken(token) {
   });
 
   try {
-    let response = hydra.makeAPIRequest(message);
+    let response = await hydra.makeAPIRequest(message);
     console.log(response);
     if(response.statusCode === 200) {
       return response.result;
@@ -16,7 +16,7 @@ async function validateToken(token) {
       throw new Error(response.statusMessage || 'Error processing validation request');
     }
   } catch (error) {
-    console.error('Error in communicating with auth service', err);
+    console.error('Error in communicating with auth service', error);
     throw new Error('Authentication service unavailable');
   }
 

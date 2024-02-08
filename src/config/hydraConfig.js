@@ -9,7 +9,7 @@ const hydraConfig = {
     serviceIP: '',
     servicePort: parseInt(process.env.PORT || '3000', 10),
     serviceType: 'express',
-    serviceDescription: 'Product service',
+    serviceDescription: 'Product managenment service',
     // Configuración de Redis, usada por hydra para el manejo de mensajes y servicios
     redis: {
       url: process.env.REDIS_URL,
