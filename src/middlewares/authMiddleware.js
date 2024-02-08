@@ -18,7 +18,7 @@ async function authMiddlware(req, res, next) {
 
 module.exports = authMiddlware;
 // Esto deberia ser el userData
-//   "result": {
+//   {
 //     "userId": "65c50da10f8cad888b34b8be",
 //     "role": "ADMIN",
 //     "iat": 1707414032,
