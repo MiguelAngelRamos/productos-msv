@@ -4,7 +4,7 @@ async function authMiddlware(req, res, next) {
   try {
     const token = req.headers.authorization;
     console.log(token);
-    const userData = validateToken(token);
+    const userData = await validateToken(token);
     console.log(userData);
 
     if(userData.role !== 'ADMIN') return res.status(403).send('Acceso denegado');
