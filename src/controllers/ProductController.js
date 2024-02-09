@@ -30,7 +30,7 @@ router.post('/', authMiddlware,  async (req, res) => {
   try {
     const newProductId = await productService.addProduct(req.body);
     res.status(201).send({ id: newProductId });
-  } catch (error) {
+  } catch (err) {
     res.status(500).send(err.message);
   }
 });
