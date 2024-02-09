@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     // res.status(200).json(products);
     res.json(products);
     
-  } catch (error) {
+  } catch (err) {
     res.status(500).send(err.message);
   }
 });
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
   try {
     const product = await productService.getProductById(req.params.id);
     res.json(product);
-  } catch (error) {
+  } catch (err) {
     res.status(500).send(err.message);
   }
 });
@@ -39,7 +39,7 @@ router.put('/:id', authMiddlware, async(req, res) => {
   try {
     await productService.updateProduct(req.params.id, req.body);
     res.json({message: 'Producto actualizado'});
-  } catch (error) {
+  } catch (err) {
     res.status(500).send(err.message);
   }
 });
@@ -48,7 +48,7 @@ router.delete('/:id', authMiddlware, async(req, res) => {
   try {
     await productService.deleteProduct(req.params.id);
     res.json({message: 'Producto Eliminado'});
-  } catch (error) {
+  } catch (err) {
     res.status(500).send(err.message);
   }
 });
